@@ -11,5 +11,4 @@ Install the poetry environment
 ``poetry install``  
 
 Step 4  
-Install pytorch  
-[text](https://pytorch.org/get-started/locally/)
+Install pytorch [here](https://pytorch.org/get-started/locally/)
