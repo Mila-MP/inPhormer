@@ -1,6 +1,6 @@
 Step 1  
 Make sure poetry is installed  
-``pip install poetry``  
+``pipx install poetry``  
 ``poetry --version``
 
 Step 2  
