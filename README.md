@@ -1,6 +1,7 @@
 Step 1  
 Make sure poetry is installed  
 ``pip install poetry``  
+``poetry --version``
 
 Step 2  
 clone repo on your local machine  
