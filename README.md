@@ -14,4 +14,4 @@ Activate poetry environment using ``poetry env activate``
 This will print something like ``"C:\Users\...\Scripts\activate.bat"`` (this is for cmd, might look different if you are using bash or others). Copy this to your command line and enter. This should activate the poetry environment.  
 
 ### Step 5: Install pytorch 
-Install pytorch [here](https://pytorch.org/get-started/locally/).
+Unfortunately, Pytorch is not compatible with Poetry, so it is easier to install Pytorch in the environment separately [here](https://pytorch.org/get-started/locally/).
