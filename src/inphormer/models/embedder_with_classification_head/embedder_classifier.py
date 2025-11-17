@@ -27,7 +27,7 @@ class EmbedderClassifier(object):
         return self._classification_head.predict(embeddings, probablities=probablities)
     
 
-    def load_from_file(path="src/inphormer/models/embedder_with_classification_head/trained_model/pretrained_embedder_dict.pkl"):
+    def load_model(path="src/inphormer/models/embedder_with_classification_head/trained_model/pretrained_embedder_dict.pkl"):
         with open(path, "rb") as f:
             embdder_classidier_dict = pickle.load(f)
 
