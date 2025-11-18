@@ -11,7 +11,10 @@ Install the poetry environment to get all the dependencies using ``poetry instal
 
 ### Step 4: Activate poetry environment
 Activate poetry environment using ``poetry env activate``  
-This will print something like ``"C:\Users\...\Scripts\activate.bat"`` (this is for cmd, might look different if you are using bash or others). Copy this to your command line and enter. This should activate the poetry environment.  
+This will print something like ``"C:\Users\...\Scripts\activate.bat"``.
+Copy this to your command line and enter. This should activate the poetry environment. 
+If instead using bash, ``poetry env activate``, 
+copy the output and run ``source 'C:\Users\...\Scripts\activate'``.
 
 ### Step 5: Install pytorch 
 Install pytorch [here](https://pytorch.org/get-started/locally/).
