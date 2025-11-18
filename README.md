@@ -11,7 +11,10 @@ Install the poetry environment to get all the dependencies using ``poetry instal
 
 ### Step 4: Activate poetry environment
 Activate poetry environment using ``poetry env activate``  
-This will print something like ``"C:\Users\...\Scripts\activate.bat"`` (this is for cmd, might look different if you are using bash or others). Copy this to your command line and enter. This should activate the poetry environment.  
+This will print something like ``"C:\Users\...\Scripts\activate.bat"``.
+Copy this to your command line and enter. This should activate the poetry environment. 
+If instead using bash, ``poetry env activate``, 
+copy the output and run ``source 'C:\Users\...\Scripts\activate'``.
 
 ### Step 5: Install pytorch 
 Install pytorch [here](https://pytorch.org/get-started/locally/).
@@ -22,7 +25,7 @@ Install pytorch [here](https://pytorch.org/get-started/locally/).
 clone this repo on your local machine
 
 ### step 2: install the package (ideally inside a conda env)
-pip install dist\inphormer-0.1.3-py3-none-any.whl
+pip install dist\inphormer-0.1.1-py3-none-any.whl
 
 ### step 3 Install pytorch
 Install pytorch [here](https://pytorch.org/get-started/locally/).
