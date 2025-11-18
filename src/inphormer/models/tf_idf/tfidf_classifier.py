@@ -317,8 +317,6 @@ class TFIDFClassifier:
                 If the file does not exist in the given path
             IOError: 
                 If there is an error unpickling the file
-            TypeError: 
-                If the loaded object is not an instance of a TFIDFCLassifier
 
         Returns:
             TFIDFClassifier: 
