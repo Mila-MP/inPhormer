@@ -25,7 +25,7 @@ Install pytorch [here](https://pytorch.org/get-started/locally/).
 clone this repo on your local machine
 
 ### step 2: install the package (ideally inside a conda env)
-pip install dist\inphormer-0.1.1-py3-none-any.whl
+pip install dist\inphormer-0.1.3-py3-none-any.whl
 
 ### step 3 Install pytorch
 Install pytorch [here](https://pytorch.org/get-started/locally/).
