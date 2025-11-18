@@ -1,37 +1,13 @@
-### Step 1: Install poetry  
-Install poetry using ``pipx install poetry``  
-Check version: ``poetry --version``  
-More details [here](https://python-poetry.org/docs/).
-
-### Step 2: Clone repo to local machine
-Clone this repo on your local machine  
-
-### Step 3: Install the poetry environment
-Install the poetry environment to get all the dependencies using ``poetry install``  
-
-### Step 4: Activate poetry environment
-Activate poetry environment using ``poetry env activate``  
-This will print something like ``"C:\Users\...\Scripts\activate.bat"``.
-Copy this to your command line and enter. This should activate the poetry environment. 
-If instead using bash, ``poetry env activate``, 
-copy the output and run ``source 'C:\Users\...\Scripts\activate'``.
-
-### Step 5: Install pytorch 
-Install pytorch [here](https://pytorch.org/get-started/locally/).
-
-
-## Or, install using wheel 
+## How to install
 ### Step 1: Clone repo to local machine
-clone this repo on your local machine
+Clone this repo on your local machine via ``git clone https://github.com/Mila-MP/inPhormer.git``
 
-### step 2: install the package (ideally inside a conda env)
-pip install dist\inphormer-0.1.3-py3-none-any.whl
+### Step 2: Install the package (ideally inside a conda env)
+Run ``pip install dist\inphormer-0.1.3-py3-none-any.whl``
 
-### step 3 Install pytorch
-Install pytorch [here](https://pytorch.org/get-started/locally/).
-
-### use the package
-in python simply 
+### Using the package
+In python simply run
 ```python
 import inphormer
 ```
+See the usage_example.ipynb file for examples on how to run the package. 
