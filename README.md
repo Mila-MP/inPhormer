@@ -3,7 +3,7 @@
 Clone this repo on your local machine via ``git clone https://github.com/Mila-MP/inPhormer.git``
 
 ### Step 2: Install the package (ideally inside a conda env)
-Run ``pip install dist\inphormer-0.1.3-py3-none-any.whl``
+Run ``pip install dist\inphormer-0.1.4-py3-none-any.whl``
 
 ### Using the package
 In python simply run
