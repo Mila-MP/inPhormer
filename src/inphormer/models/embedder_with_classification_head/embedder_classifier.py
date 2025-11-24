@@ -2,6 +2,8 @@ import pickle
 from .classification_heads.classifiers import GenericSklearnCalssifier
 from .embedders.embedders import SentenceTransformerEmbedder
 import os
+from importlib.resources import files
+
 
 class EmbedderClassifier(object):
     def __init__(self, embedder, classifider):
@@ -27,7 +29,18 @@ class EmbedderClassifier(object):
         return self._classification_head.predict(embeddings, probablities=probablities)
     
 
-    def load_model(path="src/inphormer/models/embedder_with_classification_head/trained_model/pretrained_embedder_dict.pkl"):
+    def load_model(path=None):
+        """_summary_
+
+        Args:
+            path (_type_, optional): path for the model to load, it None it loads the default pretrained model. Defaults to None.
+
+        Returns:
+            _type_: _description_
+        """
+        if path is None:
+            print("Loading Default pretrained model")
+            path = os.path.join(files("inphormer"), r"models","embedder_with_classification_head", "trained_model", "pretrained_embedder_dict.pkl")
         with open(path, "rb") as f:
             embdder_classidier_dict = pickle.load(f)
 
