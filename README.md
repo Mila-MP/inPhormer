@@ -23,17 +23,14 @@ Download the package (whl file):
 ```shell
 curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/dist/inphormer-0.1.6-py3-none-any.whl -O
 ```
-You can also download the usage example notebook if you wish:
-```shell
-curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/usage_example.ipynb -O
-```
+
 
 ### Step 3: Install the package
 Run
 ```shell
 pip install inphormer-0.1.6-py3-none-any.whl
 ```
-This might take a while (took ~10 minutes on a completely empty environemnt) depending on how many packages are already in your environment. 
+This might take a while (took ~3 minutes on a completely empty environemnt) depending on how many packages are already in your environment. 
 
 ### Step 4: Using the package
 In python simply run
@@ -41,9 +38,12 @@ In python simply run
 import inphormer
 ```
 
-### Example usage pyjupiter notebook
-See the usage_example.ipynb file for examples on how to run the package. 
-If you want to use the usage notebook, don't forget to install pyjupiter using 
+### Example usage Jupyter notebook
+You can download the usage example notebook if you wish:
+```shell
+curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/usage_example.ipynb -O
+```
+Don't forget to install ipykernel in your environment to be able to run the notebook:
 ```shell
 pip install ipykernel
 ```
