@@ -28,14 +28,14 @@ You can also download the usage example notebook if you wish:
 curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/usage_example.ipynb -O
 ```
 
-### Step 2: Install the package
+### Step 3: Install the package
 Run
 ```shell
 pip install inphormer-0.1.5-py3-none-any.whl
 ```
 This might take a while (~10 minutes) depending on how many packages are already in your environment. 
 
-### Step 3: Using the package
+### Step 4: Using the package
 In python simply run
 ```python
 import inphormer
