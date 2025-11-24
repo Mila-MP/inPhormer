@@ -15,7 +15,7 @@ conda activate inphormer
 ### Step 2: download whl file to local machine
 download the whl file and the usage example notebook 
 ```shell
-curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/dist/inphormer-0.1.4-py3-none-any.whl -O
+curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/dist/inphormer-0.1.4-py3-none-any.tar.gz -O
 curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/usage_example.ipynb -O
 ```
 
