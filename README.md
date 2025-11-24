@@ -3,27 +3,39 @@ python versions >=3.12,<3.14
 
 ## How to install
 
-### Step 1 Create Conda enviroment (optional)
-##### if you use an existing environment make sure the python version is in the supported python versions)
+### Step 1 (recommended): Create new Conda enviroment or activate existing one 
+#### If you use an existing environment make sure the python version is in the supported python versions.
 
-Create a new conda environemnt
-```bash
-conda create --name inphormer python=3.13
-conda activate inphormer
+##### Create a new conda environemnt and activate it
+```shell
+conda create --name <new_env> python=3.13
+conda activate <new_env>
 ```
 
-### Step 2: download whl file to local machine
-download the whl file and the usage example notebook 
+##### Or, activate existing environment
 ```shell
-curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/dist/inphormer-0.1.4-py3-none-any.tar.gz -O
+conda activate <existing_env>
+```
+
+
+### Step 2: Download package to local machine
+Download the package (whl file):
+```shell
+curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/dist/inphormer-0.1.5-py3-none-any.whl -O
+```
+You can also download the usage example notebook if you wish:
+```shell
 curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/usage_example.ipynb -O
 ```
 
-
 ### Step 2: Install the package
-Run ``pip install inphormer-0.1.4-py3-none-any.whl``
+Run
+```shell
+pip install inphormer-0.1.5-py3-none-any.whl
+```
+This might take a while (~10 minutes) depending on how many packages are already in your environment. 
 
-### Using the package
+### Step 3: Using the package
 In python simply run
 ```python
 import inphormer
