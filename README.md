@@ -30,7 +30,7 @@ Run
 ```shell
 pip install inphormer-0.1.6-py3-none-any.whl
 ```
-This might take a while (took ~3 minutes on a completely empty environemnt) depending on how many packages are already in your environment. 
+This might take a while (~10 minutes) depending on how many packages are already in your environment and/or cached packages. 
 
 ### Step 4: Using the package
 In python simply run
