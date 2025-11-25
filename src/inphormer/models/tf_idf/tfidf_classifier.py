@@ -328,6 +328,7 @@ class TFIDFClassifier:
                 obj = pickle.load(f)
         except (OSError, pickle.UnpicklingError) as e:
             raise IOError(f"Error loading classifier from '{path}': {e}") from e
+        obj._lemmatizer = spacy.load("en_core_web_sm", disable=["parser", "ner", "textcat"])
         return obj
 
     @property
