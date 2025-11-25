@@ -33,7 +33,6 @@ class TFIDFClassifier:
 
     def __init__(
             self,
-            spacy_model: str = "en_core_web_sm",
             classifier: Optional[BaseEstimator] = None,
             vectorizer: Optional[TfidfVectorizer] = None,
             is_fitted: bool = False
@@ -43,9 +42,6 @@ class TFIDFClassifier:
         Initializes a TFIDFClassifier instance. 
 
         Args:
-            spacy_model (str, optional): 
-                The name of the spaCy language model to load for lemmatization.
-                Defaults to "en_core_web_sm".
             classifier (Optional[BaseEstimator], optional): 
                 A scikit-learn classifier implementing `fit` and `predict`. 
                 Defaults to `ComplementNB(alpha=0.002783)`. 
@@ -60,24 +56,12 @@ class TFIDFClassifier:
                 Defaults to False. 
 
         Raises:
-            OSError: 
-                If the passed spaCy language model `spacy_model` cannot be loaded
             TypeError: 
                 If the passed classifier `classifier` does not have the method `fit` nor `predict`
             TypeError: 
                 If the passed TF-IDF vectorizer `vectorizer` does not have the method
                 `fit_transform` nor `transform`
         """
-
-        # Loading spaCy model
-        try:
-            self._lemmatizer = spacy.load(spacy_model, disable=["parser", "ner", "textcat"])
-        except OSError as e:
-            raise OSError(
-                f"Could not load spaCy model '{spacy_model}'."
-                "Make sure it is installed (e.g. `python -m spacy download en_core_web_sm`)."
-            ) from e
-
         # Validate classifier
         if classifier is None:
             classifier = ComplementNB(alpha=0.002783)
@@ -164,12 +148,12 @@ class TFIDFClassifier:
             raise ValueError("`label` column contains missing values.")
 
         texts = train_df["protein_annotation"]
-
+        lm = spacy.load("en_core_web_sm", disable=["parser", "ner", "textcat"])
         # Applying cleaning and lemmatization function
         cleaned_texts: List[str] = []
         for i, t in texts.items():
             try:
-                cleaned_texts.append(self._clean_lemmatize(t))
+                cleaned_texts.append(self._clean_lemmatize(t, lm))
             except (TypeError, ValueError) as e:
                 raise type(e)(f"Invalid `protein_annotation` at index {i}: {e}") from e
 
@@ -219,12 +203,12 @@ class TFIDFClassifier:
 
         # Validate that X is a proper sequence
         raw_texts = self._validate_text_sequence(annotations)
-
+        lm = spacy.load("en_core_web_sm", disable=["parser", "ner", "textcat"])
         # Clean and lemmatize each entry, with index-aware error messages
         cleaned: List[str] = []
         for i, t in enumerate(raw_texts):
             try:
-                cleaned.append(self._clean_lemmatize(t))
+                cleaned.append(self._clean_lemmatize(t, lm))
             except (TypeError, ValueError) as e:
                 raise type(e)(f"Invalid text at index {i}: {e}") from e
 
@@ -328,7 +312,6 @@ class TFIDFClassifier:
                 obj = pickle.load(f)
         except (OSError, pickle.UnpicklingError) as e:
             raise IOError(f"Error loading classifier from '{path}': {e}") from e
-        obj._lemmatizer = spacy.load("en_core_web_sm", disable=["parser", "ner", "textcat"])
         return obj
 
     @property
@@ -389,7 +372,7 @@ class TFIDFClassifier:
             f"status={status})"
             )
 
-    def _clean_lemmatize(self, text: str) -> str:
+    def _clean_lemmatize(self, text: str, lemmatizer) -> str:
 
         """
         Cleans a text string and lemmatize using spaCy.
@@ -421,7 +404,7 @@ class TFIDFClassifier:
         text = re.sub(r"\s+", " ", text)  # Cleans up extra spaces again
 
         # Lemmatization
-        doc = self._lemmatizer(text)
+        doc = lemmatizer(text)
         lemmas: List[str] = []
 
         for tok in doc:
