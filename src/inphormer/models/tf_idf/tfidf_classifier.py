@@ -13,6 +13,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import MultinomialNB, ComplementNB
+from importlib.resources import files
 
 class TFIDFClassifier:
 
@@ -47,11 +48,7 @@ class TFIDFClassifier:
                 Defaults to "en_core_web_sm".
             classifier (Optional[BaseEstimator], optional): 
                 A scikit-learn classifier implementing `fit` and `predict`. 
-                Defaults to `LogisticRegression(solver="saga", 
-                                                max_iter=1000,
-                                                penalty='l2', 
-                                                C=17.0798, 
-                                                class_weight=None)`. 
+                Defaults to `ComplementNB(alpha=0.002783)`. 
             vectorizer (Optional[TfidfVectorizer], optional):
                 A TF-IDF vectorizer.
                 Defaults to `TfidfVectorizer(lowercase=False,
@@ -83,13 +80,7 @@ class TFIDFClassifier:
 
         # Validate classifier
         if classifier is None:
-            classifier =  LogisticRegression(
-                                solver="saga",
-                                max_iter=1000,
-                                penalty='l2',
-                                C=17.0798,
-                                class_weight=None
-                                )
+            classifier = ComplementNB(alpha=0.002783)
         else:
             for required_method in ("fit", "predict"):
                 if not hasattr(classifier, required_method):
@@ -303,14 +294,15 @@ class TFIDFClassifier:
             raise IOError(f"Error saving classifier to '{path}': {e}") from e
 
     @classmethod
-    def load_from_file(cls, path: Union[str, os.PathLike]) -> "TFIDFClassifier":
+    def load_from_file(cls, path: Union[str, os.PathLike] = None) -> "TFIDFClassifier":
 
         """
         Loads a TFIDFClassifier instance from a pickle file
 
         Args:
             path (Union[str, os.PathLike]): 
-                The path containing the pickle file
+                The path containing the pickle file. If None, loads deafualt pretrained model.
+                Defaults to None. 
 
         Raises:
             FileNotFoundError:
@@ -322,7 +314,9 @@ class TFIDFClassifier:
             TFIDFClassifier: 
                 An instance of a TFIDFClassifier
         """
-
+        
+        if path is None:
+            path = os.path.join(files("inphormer"), "models", "tf_idf", "ComplementNaiveBayes_TF-IDF.pkl")
         path = Path(path)
 
         # Checking that the file exists
