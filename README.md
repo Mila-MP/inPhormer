@@ -7,10 +7,10 @@ This tool provides a rapid, reliable, and scalable way to classify annotations i
 - **Low Informative** (1): Annotations that offer some general context but lack specificity (e.g. "3D (Asp-Asp-Asp) domain-containing protein", "DUF3365 domain-containing protein").
 - **Proper** (2): Annotations that contain sufficient, specific functional detail (e.g. "Nucleosome remodeling complex atpase subunit", "Head-tail connector protein").
 
-  The package gives the option to choose between three different prediction methods:
-  1. **Term Frequency-Inverse Document Frequency** (TF-IDF) trained on phage protein annotation data
-  2. [BioBERT encoder](https://huggingface.co/pritamdeka/S-BioBert-snli-multinli-stsb) with a classification head trained on phage protein annotation data
-  3. [[PubMedBERT encoder](https://huggingface.co/microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext) + classification layer] **fine-tuned** on phage protein annotation data
+The package gives the option to choose between three different prediction methods:
+1. **Term Frequency-Inverse Document Frequency** (TF-IDF) trained on phage protein annotation data
+2. [BioBERT encoder](https://huggingface.co/pritamdeka/S-BioBert-snli-multinli-stsb) with a classification head trained on phage protein annotation data
+3. [[PubMedBERT encoder](https://huggingface.co/microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext) + classification layer] **fine-tuned** on phage protein annotation data
 
 The three methods in inPhormer offer a trade-off between speed and predictive accuracy. The TF-IDF method is the fastest and most computationally lightweight, making it ideal for extremely rapid, large-scale preliminary filtering, though it offers the lowest overall accuracy. Conversely, the fine-tuned approach is the most accurate method, but it requires the longest computation time. The second method (^re-trained encoder with classification head strikes a good balance between the two.
 
