@@ -12,7 +12,7 @@ The package gives the option to choose between three different prediction method
 2. [BioBERT encoder](https://huggingface.co/pritamdeka/S-BioBert-snli-multinli-stsb) with a classification head trained on phage protein annotation data
 3. [[PubMedBERT encoder](https://huggingface.co/microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract-fulltext) + classification layer] **fine-tuned** on phage protein annotation data
 
-The three methods in inPhormer offer a trade-off between speed and predictive accuracy. The TF-IDF method is the fastest and most computationally lightweight, making it ideal for extremely rapid, large-scale preliminary filtering, though it offers the lowest overall accuracy. Conversely, the fine-tuned approach is the most accurate method, but it requires the longest computation time. The second method (^re-trained encoder with classification head strikes a good balance between the two.
+The three methods in inPhormer offer a trade-off between speed and predictive accuracy. The TF-IDF method is the fastest and most computationally lightweight, making it ideal for extremely rapid, large-scale preliminary filtering, though it offers the lowest overall accuracy. Conversely, the fine-tuned approach is the most accurate method, but it requires the longest computation time. The second method pre-trained encoder with classification head strikes a good balance between the two.
 
 # Installation
 ## Supported python versions
@@ -60,9 +60,13 @@ You can download the usage example notebook if you wish:
 ```shell
 curl -L https://github.com/Mila-MP/inPhormer/raw/refs/heads/main/usage_example.ipynb -O
 ```
-Don't forget to install ipykernel in your environment to be able to run the notebook:
+Don't forget to install ipykernel in your environment to be able to run the notebook. 
 ```shell
 pip install ipykernel
+```
+Running the following allows Jupyter to select you environment as a kernel:
+```shell
+python -m ipykernel install --user --name <conda_env> --display-name "Python (<conda_env>)"
 ```
 
 
